@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Glow Box - ปรับค่าการนับ</title>
+  <style>
+    .online-glow-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: linear-gradient(#000000, #000000, #000000);
+      border: 1px solid #03d2cb;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      width: 320px;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+    }
+
+ @keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #00ff8a;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+  </style>
+</head>
+<body style="background-color: #001; display: flex; justify-content: center; align-items: center; height: 100vh;">
+
+  <div class="online-glow-box">
+    <div class="status-dot"></div>
+    <span>ออนไลน์อยู่ตอนนี้ <span id="counter">310000</span></span>
+  </div>
+
+  <script>
+    // 🔧 ปรับค่าตรงนี้
+    let count = 310000;       // ค่าที่เริ่มต้น (เปลี่ยนได้)
+    const step = 13;          // เพิ่มทีละกี่ตัวเลข
+    const speed = 850;         // ความเร็ว (มิลลิวินาที) → ยิ่งน้อยยิ่งเร็ว
+
+    const counterElement = document.getElementById('counter');
+
+    setInterval(() => {
+      count += step;
+      counterElement.textContent = count.toLocaleString('th-TH');
+    }, speed);
+  </script>
+
+</body>
+</html>
+
+
